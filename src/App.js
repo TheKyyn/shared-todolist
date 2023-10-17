@@ -6,6 +6,7 @@ import SignIn from "/components/SignIn";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useState } from "react";
+import Todolist from "./components/Todolist";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,12 +38,15 @@ function App() {
         {user ? (
           <>
             <p>Bonjour, {user.email}</p>
+            <button onClick={handleSignOut}>Déconnexion</button>
+            <Todolist />
             {/* Ajouter ici que les composants et routes qui seront accessibles uniquement aux users connectés */}
           </>
         ) : (
           <Switch>
             <Route path="/signup" component={SignUp} />
             <Route path="/signin" component={SignIn} />
+            <Redirect to="/signin" />
           </Switch>
         )}
       </div>
