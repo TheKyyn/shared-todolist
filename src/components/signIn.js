@@ -72,18 +72,18 @@ const SignIn = () => {
             max-w-max
             "
                 >
-                  Sign In
+                  GO !
                 </button>
                 <button
                   type="submit"
                   className="
-            bg-white
-            text-black
-            hover:bg-black
-            hover:text-white
+            bg-black
+            text-white
+            hover:bg-white
+            hover:text-black
             border-2
-            border-black
-            hover:border-white
+            border-white
+            hover:border-black
             uppercase
             text-base
             font-bold
@@ -99,14 +99,16 @@ const SignIn = () => {
               </div>
               <div className="flex text-center align-middle justify-center text-base">
                 <a href="/forgot-password"
-                className="text-white hover:underline w-full h-full flex text-center align-middle justify-center p-0 m-0"
+                className="text-white hover:underline w-full h-full flex text-center align-middle justify-center p-0 m-0 hover:text-purple-700"
                 >
                   Forgot Password?
                 </a>
               </div>
             </div>
           </form>
-          {error && <p>{error}</p>}
+          {error && <p
+          className="text-red-500 text-center w-lg"
+          >{error}</p>}
         </div>
       </div>
       
