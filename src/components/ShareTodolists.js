@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "../firebase";
-import firebase from "firebase";
+import { arrayUnion } from "firebase/firestore";
 
 //Composant qui gère l'ajout d'autres users à une todolist via leur email
 
@@ -19,7 +19,7 @@ function ShareTodolist() {
         .collection("todolists")
         .doc("yourTodolistId")
         .update({
-          users: firebase.firestore.FieldValue.arrayUnion(userId),
+          users: arrayUnion(userId),
         });
       setEmail("");
     } else {

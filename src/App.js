@@ -1,16 +1,23 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import SignUp from "/components/SignUp";
-import SignIn from "/components/SignIn";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Redirect,
+  useNavigate,
+} from "react-router-dom";
+import SignUp from "./components/signUp";
+import SignIn from "./components/signIn";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useState } from "react";
 import Todolist from "./components/Todolist";
 import ShareTodolist from "./components/ShareTodolists";
 
-function App() {
+function AuthHandler() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -18,12 +25,12 @@ function App() {
         setUser(currentUser);
       } else {
         setUser(null);
+        navigate("/signin");
       }
     });
 
-    // On se désabonne du l'écouteur lors du nettoyage
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
   const handleSignOut = async () => {
     try {
@@ -33,25 +40,30 @@ function App() {
     }
   };
 
+  if (user) {
+    return (
+      <>
+        <p>Bonjour, {user.email}</p>
+        <button onClick={handleSignOut}>Déconnexion</button>
+        <Todolist />
+        <ShareTodolist />
+      </>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/signup" component={SignUp} />
+      <Route path="/signin" component={SignIn} />
+      {/* <Redirect to="/signin" /> */}
+    </Routes>
+  );
+}
+
+function App() {
   return (
     <Router>
-      <div>
-        {user ? (
-          <>
-            <p>Bonjour, {user.email}</p>
-            <button onClick={handleSignOut}>Déconnexion</button>
-            <Todolist />
-            <ShareTodolist />
-            {/* Ajouter ici que les composants et routes qui seront accessibles uniquement aux users connectés */}
-          </>
-        ) : (
-          <Switch>
-            <Route path="/signup" component={SignUp} />
-            <Route path="/signin" component={SignIn} />
-            <Redirect to="/signin" />
-          </Switch>
-        )}
-      </div>
+      <AuthHandler />
     </Router>
   );
 }
