@@ -64,6 +64,7 @@ function App() {
   return (
     <Router>
       <AuthHandler />
+      <Todolist />
     </Router>
   );
 }
