@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import SignUp from "/components/SignUp";
 import SignIn from "/components/SignIn";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useState } from "react";
 import Todolist from "./components/Todolist";
+import ShareTodolist from "./components/ShareTodolists";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +41,7 @@ function App() {
             <p>Bonjour, {user.email}</p>
             <button onClick={handleSignOut}>Déconnexion</button>
             <Todolist />
+            <ShareTodolist />
             {/* Ajouter ici que les composants et routes qui seront accessibles uniquement aux users connectés */}
           </>
         ) : (
