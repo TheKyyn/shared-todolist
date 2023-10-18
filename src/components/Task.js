@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 import React from "react";
 import { db } from "../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 //Ce composant affiche une tâche individuelle et permet de changer son état (complété ou non)
 
