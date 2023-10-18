@@ -1,6 +1,11 @@
 import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes, useNavigate, } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import SignUp from "./components/signUp";
 import SignIn from "./components/signIn";
 import { auth } from "./firebase";
@@ -47,8 +52,9 @@ function AuthHandler() {
 
   return (
     <Routes>
-      <Route path="/signup" component={SignUp} />
-      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/" element={<Navigate to="/signin" />} />
     </Routes>
   );
 }

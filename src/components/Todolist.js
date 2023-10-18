@@ -35,6 +35,11 @@ function Todolist() {
   }, [isAuthenticated]);
 
   const addTask = async () => {
+    if (!isAuthenticated) {
+      console.warn("Tentative d'ajout de tâche sans authentification");
+      return;
+    }
+
     const tasksRef = collection(db, "todolists", auth.currentUser.uid, "tasks");
     await addDoc(tasksRef, {
       title: newTask,
