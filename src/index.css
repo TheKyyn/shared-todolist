@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  font-family: JetBrains Mono, monospace;
+  background-color: black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
