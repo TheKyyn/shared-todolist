@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes, useNavigate, } from "react-router-dom";
 import SignUp from "./components/signUp";
 import SignIn from "./components/signIn";
@@ -57,6 +56,7 @@ function App() {
   return (
     <Router>
       <AuthHandler />
+      <SignIn />
     </Router>
   );
 }
