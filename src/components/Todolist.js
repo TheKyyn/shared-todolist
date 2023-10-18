@@ -4,6 +4,7 @@ import Task from "./Task";
 import { collection, doc, addDoc, onSnapshot } from "firebase/firestore";
 import Header from "./Header";
 import background2 from "./background2.jpeg";
+import { auth } from "../firebase";
 
 
 function Todolist() {
@@ -11,7 +12,7 @@ function Todolist() {
   const [newTask, setNewTask] = useState("");
 
   useEffect(() => {
-    const tasksRef = collection(db, "todolists", "yourTodolistId", "tasks");
+    const tasksRef = collection(db, "todolists", auth.currentUser.uid, "tasks");
     const unsubscribe = onSnapshot(tasksRef, (snapshot) => {
       const tasksData = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -24,7 +25,7 @@ function Todolist() {
   }, []);
 
   const addTask = async () => {
-    const tasksRef = collection(db, "todolists", "yourTodolistId", "tasks");
+    const tasksRef = collection(db, "todolists", auth.currentUser.uid, "tasks");
     await addDoc(tasksRef, {
       title: newTask,
       completed: false,

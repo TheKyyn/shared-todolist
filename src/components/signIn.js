@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import background from "./background.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
       await auth.signInWithEmailAndPassword(email, password);
+      navigate("/todolist");
     } catch (error) {
       setError(error.message);
     }
@@ -21,7 +24,8 @@ const SignIn = () => {
       <img
         src={background}
         alt="background"
-        className="h-screen w-screen bg-cover bg-center"/>
+        className="h-screen w-screen bg-cover bg-center"
+      />
       <div className="flex flex-col max-w-lg absolute">
         <div className="flex border-4 border-white flex-col p-4">
           <h2 className="text-white flex font-black align-middle justify-center p-1 bg-black border-white border-4 uppercase text-5xl">
@@ -75,7 +79,7 @@ const SignIn = () => {
                   GO !
                 </button>
                 <button
-                  type="submit"
+                  onClick={() => navigate("/signup")}
                   className="
             bg-black
             text-white
@@ -98,21 +102,18 @@ const SignIn = () => {
                 </button>
               </div>
               <div className="flex text-center align-middle justify-center text-base">
-                <a href="/forgot-password"
-                className="text-white hover:underline w-full h-full flex text-center align-middle justify-center p-0 m-0 hover:text-purple-700"
+                <a
+                  href="/forgot-password"
+                  className="text-white hover:underline w-full h-full flex text-center align-middle justify-center p-0 m-0 hover:text-purple-700"
                 >
                   Forgot Password?
                 </a>
               </div>
             </div>
           </form>
-          {error && <p
-          className="text-red-500 text-center w-lg"
-          >{error}</p>}
+          {error && <p className="text-red-500 text-center w-lg">{error}</p>}
         </div>
       </div>
-      
-      
     </div>
   );
 };

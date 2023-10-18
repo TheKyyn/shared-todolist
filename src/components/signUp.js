@@ -78,7 +78,7 @@ const SignUp = () => {
       
               </div>
               <div className="flex text-center align-middle justify-center text-base">
-                <a href="/forgot-password"
+                <a href="/signIn"
                 className="text-white hover:underline w-full h-full flex text-center align-middle justify-center p-0 m-0 hover:text-purple-700"
                 >
                   Already have an account?
