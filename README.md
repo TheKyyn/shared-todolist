@@ -6,10 +6,10 @@ Ce projet est une application de todolist unique qui permet non seulement à un 
 
 # Fonctionnalités
 
-Gestion des tâches: Les utilisateurs peuvent ajouter, marquer comme terminées, ou supprimer des tâches.
-Authentification: Connexion sécurisée avec email et mot de passe.
-Partage de todolist: Les utilisateurs peuvent partager leur todolist avec d'autres utilisateurs via leur email.
-Design Personnalisé: L'application arbore un design personnalisé unique qui rend l'utilisation plus agréable.
+- Gestion des tâches: Les utilisateurs peuvent ajouter, marquer comme terminées, ou supprimer des tâches.
+- Authentification: Connexion sécurisée avec email et mot de passe.
+- Partage de todolist: Les utilisateurs peuvent partager leur todolist avec d'autres utilisateurs via leur email.
+- Design Personnalisé: L'application arbore un design personnalisé unique qui rend l'utilisation plus agréable.
 
 # Technologies Utilisées
 
