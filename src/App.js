@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes, useNavigate, } from "react-router-dom";
 import SignUp from "./components/signUp";
 import SignIn from "./components/signIn";
@@ -7,7 +8,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Todolist from "./components/Todolist";
 import ShareTodolist from "./components/ShareTodolists";
-import Task from "./components/Task";
 
 function AuthHandler() {
   const [user, setUser] = useState(null);
@@ -57,7 +57,6 @@ function App() {
   return (
     <Router>
       <AuthHandler />
-      <Todolist />
     </Router>
   );
 }
