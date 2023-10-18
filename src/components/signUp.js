@@ -73,7 +73,7 @@ const SignUp = () => {
             max-w-max
             "
                 >
-                  SIGN UP
+                  REGISTER
                 </button>
       
               </div>

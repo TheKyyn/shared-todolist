@@ -98,7 +98,7 @@ const SignIn = () => {
             max-w-max
             "
                 >
-                  Sign Up
+                Create an account
                 </button>
               </div>
               <div className="flex text-center align-middle justify-center text-base">
