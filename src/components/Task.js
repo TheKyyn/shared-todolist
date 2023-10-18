@@ -5,14 +5,10 @@ import { db } from "../firebase";
 
 function Task({ task }) {
   const toggleCompleted = async () => {
-    await db
-      .collection("todolists")
-      .doc("yourTodolistId")
-      .collection("tasks")
-      .doc(task.id)
-      .update({
-        completed: !task.completed,
-      });
+    const taskDocRef = doc(db, "todolists", "yourTodolistId", "tasks", task.id);
+    await updateDoc(taskDocRef, {
+      completed: !task.completed,
+    });
   };
 
   return (

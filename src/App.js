@@ -1,12 +1,6 @@
 import React from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Redirect,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate, } from "react-router-dom";
 import SignUp from "./components/signUp";
 import SignIn from "./components/signIn";
 import { auth } from "./firebase";
@@ -55,7 +49,6 @@ function AuthHandler() {
     <Routes>
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
-      {/* <Redirect to="/signin" /> */}
     </Routes>
   );
 }
